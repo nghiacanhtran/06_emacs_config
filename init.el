@@ -20,7 +20,10 @@
 (prefer-coding-system 'utf-8)
 
 (setq make-backup-files nil)
-
+(setq-default inhibit-startup-message t
+              use-short-answers t)
+(setq inhibit-startup-echo-area-message
+      "Lùi một bước biển rộng trời cao")
 
 
 ;; -*- lexical-binding: t; -*-
@@ -46,7 +49,11 @@
                      (emacs-init-time "%.2f")
                      gcs-done)))
 
-(add-hook 'prog-mode-hook 'display-line-numbers-mode) ;; enable line number
+(dolist (mode '(text-mode-hook
+                prog-mode-hook
+                conf-mode-hook))
+(add-hook mode (lambda () (display-line-numbers-mode 1))))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (custom-set-variables
@@ -70,9 +77,3 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; ORG
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Modern looks for Org
-(use-package org-modern
-  :after org
-  :hook (org-mode . org-modern-mode)
-  :config
-  (setq org-modern-block-fringe nil))
