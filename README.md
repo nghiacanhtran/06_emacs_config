@@ -4,4 +4,9 @@
   - Search prev: ctr + r <char>
 - AutoComplete : Alt+\
 - Thêm một dòng mới: ctrl + o
+- Replace bằng muticursor
+  - CTRL + x space
+  - Di chuyển trỏ chuột tới điểm cần thực thi
+  - CRTL + x r t
+  - Thêm ký tự cần Replace
   
